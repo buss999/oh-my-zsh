@@ -29,4 +29,4 @@ plugins=(git svn)
 source $ZSH/oh-my-zsh.sh
 RPROMPT="%{$orange%}[%*]%{$reset_color%}" 
 # Customize to your needs...
-PATH="/home/enigma/bin/:${PATH}"
+PATH="${HOME}/bin/:${PATH}"
