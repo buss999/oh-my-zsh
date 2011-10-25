@@ -31,5 +31,6 @@ RPROMPT="%{$orange%}[%*]%{$reset_color%}"
 # Customize to your needs...
 PATH="${HOME}/bin/:${PATH}"
 EDITOR=vim
+alias dt="dmesg | tail"
 [ -e /etc/DIR_COLORS ] && eval `dircolors /etc/DIR_COLORS`
 [ -e ${HOME}/.dir_colors ] && eval `dircolors ${HOME}/.dir_colors`
