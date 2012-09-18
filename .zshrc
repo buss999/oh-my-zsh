@@ -44,6 +44,7 @@ RPROMPT="%{$orange%}[%*]%{$reset_color%}"
 # Customize to your needs...
 PATH="${HOME}/bin/:${PATH}"
 EDITOR=vim
+PYTHONSTARTUP="${HOME}/.pythonstartup"
 alias dt="dmesg | tail"
 alias less="less -r"
 ulimit -c unlimited
