@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 
 VIMODE=">> "
 function zle-keymap-select {
-    VIMODE=“${${KEYMAP/(main|viins)/>> }/(vicmd)/}${${KEYMAP/vicmd/<< }/(main|viins)/}”
+    VIMODE="${${KEYMAP/(main|viins)/>> }/(vicmd)/}${${KEYMAP/vicmd/<< }/(main|viins)/}"
     zle reset-prompt
 }
 zle -N zle-keymap-select
