@@ -27,11 +27,26 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git svn)
 
 source $ZSH/oh-my-zsh.sh
+
+VIMODE=">> "
+function zle-keymap-select {
+    VIMODE="${${KEYMAP/(main|viins)/>> }/(vicmd)/}${${KEYMAP/vicmd/<< }/(main|viins)/}"
+    zle reset-prompt
+}
+zle -N zle-keymap-select
+set -o vi
+
+PROMPT=$'
+%{$purple%}%n%{$reset_color%} at %{$orange%}%m%{$reset_color%} in %{$limegreen%}%~%{$reset_color%} $vcs_info_msg_0_
+$(virtualenv_info)${VIMODE}$ '
+
 RPROMPT="%{$orange%}[%*]%{$reset_color%}" 
 # Customize to your needs...
 PATH="${HOME}/bin/:${PATH}"
 EDITOR=vim
 VISUAL=vim
+BC_ENV_ARGS=~/.bcrc
+PYTHONSTARTUP="${HOME}/.pythonstartup"
 alias dt="dmesg | tail"
 alias less="less -r"
 ulimit -c unlimited
