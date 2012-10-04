@@ -28,13 +28,20 @@ plugins=(git svn)
 
 source $ZSH/oh-my-zsh.sh
 
-VIMODE=">> "
+VIMODE="i "
 function zle-keymap-select {
-    VIMODE="${${KEYMAP/(main|viins)/>> }/(vicmd)/}${${KEYMAP/vicmd/<< }/(main|viins)/}"
+    VIMODE="${${KEYMAP/(main|viins)/i }/(vicmd)/}${${KEYMAP/vicmd/c }/(main|viins)/}"
     zle reset-prompt
 }
 zle -N zle-keymap-select
 set -o vi
+
+function zle-line-init { echoti smkx; }
+function zle-line-finish { echoti rmkx; }
+
+zle -N zle-line-init
+zle -N zle-line-finish
+
 
 PROMPT=$'
 %{$purple%}%n%{$reset_color%} at %{$orange%}%m%{$reset_color%} in %{$limegreen%}%~%{$reset_color%} $vcs_info_msg_0_
