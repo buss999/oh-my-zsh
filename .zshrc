@@ -36,6 +36,8 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 set -o vi
 
+bindkey '^R' history-incremental-search-backwards
+
 function zle-line-init { echoti smkx; }
 function zle-line-finish { echoti rmkx; }
 
