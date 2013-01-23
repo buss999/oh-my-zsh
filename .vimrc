@@ -815,6 +815,7 @@ set foldlevelstart=0
 set foldlevel=0
 " autocmd FileType tex,c,cpp,h,pl,perl,py,bib,php,sh,txt normal zR
 autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
+autocmd BufRead,BufNewFile CMakeLists.txt setf cmake
 autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
 set tabstop=2
 hi Underlined ctermfg=6
@@ -827,3 +828,5 @@ filetype plugin indent on
 set grepprg=grep\ -hH\ $*
 let g:tex_flavor = "latex"
 set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+
+set modeline
