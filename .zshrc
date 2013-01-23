@@ -35,8 +35,14 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 set -o vi
+typeset -A keym
+bindkey -M viins "OA" up-line-or-history
+bindkey -M viins "OB" down-line-or-history
+bindkey -M vicmd "OA" up-line-or-history
+bindkey -M vicmd "OB" down-line-or-history
 
-bindkey '^R' history-incremental-search-backwards
+bindkey -M viins "" history-incremental-search-backward
+bindkey -M vicmd "" history-incremental-search-backward
 
 function zle-line-init { echoti smkx; }
 function zle-line-finish { echoti rmkx; }
