@@ -46,12 +46,21 @@ bindkey -M vicmd "OB" down-line-or-history
 bindkey -M viins "" history-incremental-search-backward
 bindkey -M vicmd "" history-incremental-search-backward
 
-function zle-line-init { echoti smkx; }
-function zle-line-finish { echoti rmkx; }
+typeset -ga debian_missing_features
 
-zle -N zle-line-init
-zle -N zle-line-finish
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
 
+  function zle-line-init { echoti smkx; }
+  function zle-line-finish { echoti rmkx; }
+
+  zle -N zle-line-init
+  zle -N zle-line-finish
+else
+  for i in {s,r}mkx; do
+    (( ${+terminfo[$i]} )) || debian_missing_features+=($i)
+  done
+  unset i
+fi
 
 PROMPT=$'
 %{$purple%}%n%{$reset_color%} at %{$orange%}%m%{$reset_color%} in %{$limegreen%}%~%{$reset_color%} $vcs_info_msg_0_
