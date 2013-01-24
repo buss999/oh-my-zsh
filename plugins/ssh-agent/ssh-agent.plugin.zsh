@@ -27,6 +27,7 @@ local _plugin__forwarding
 function _plugin__start_agent()
 {
   local -a identities
+  local -a no_ident
 
   # start ssh-agent and setup environment
   /usr/bin/env ssh-agent | sed 's/^echo/#echo/' > ${_plugin__ssh_env}
@@ -34,9 +35,12 @@ function _plugin__start_agent()
   . ${_plugin__ssh_env} > /dev/null
 
   # load identies
-  zstyle -a :omz:plugins:ssh-agent identities identities 
-  echo starting...
-  /usr/bin/ssh-add $HOME/.ssh/${^identities}
+  zstyle -a :omz:plugins:ssh-agent no_identities no_ident
+  if [ -z "${no_ident}" -o ${no_ident} != "true" ] ; then
+    zstyle -a :omz:plugins:ssh-agent identities identities 
+    echo starting...
+    /usr/bin/ssh-add $HOME/.ssh/${^identities}
+  fi
 }
 
 # test if agent-forwarding is enabled

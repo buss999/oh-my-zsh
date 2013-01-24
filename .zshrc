@@ -24,6 +24,8 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
+zstyle :omz:plugins:ssh-agent no_identities "true"
+
 plugins=(git svn ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
