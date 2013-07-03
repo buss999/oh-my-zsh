@@ -77,6 +77,7 @@ PYTHONSTARTUP="${HOME}/.pythonstartup"
 alias dt="dmesg | tail"
 alias less="less -r"
 alias getpwd="cat /dev/urandom | tr -dc 'A-Za-z0-9{}[])(*&^%$#@!;:.,<>?|/\\/' | fold -w10 | head -n1"
+alias o="xdg-open"
 ulimit -c unlimited
 [ -e /etc/DIR_COLORS ] && eval `dircolors /etc/DIR_COLORS`
 [ -e ${HOME}/.dir_colors ] && eval `dircolors ${HOME}/.dir_colors`
