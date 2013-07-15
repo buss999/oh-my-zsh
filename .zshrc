@@ -81,3 +81,4 @@ alias o="xdg-open"
 ulimit -c unlimited
 [ -e /etc/DIR_COLORS ] && eval `dircolors /etc/DIR_COLORS`
 [ -e ${HOME}/.dir_colors ] && eval `dircolors ${HOME}/.dir_colors`
+[ ${COLORTERM} = "Terminal" ] && export TERM=xterm-256color
