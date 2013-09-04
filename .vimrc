@@ -143,9 +143,9 @@ filetype on
 " at all with a .txt extension as being human-language text [this clobbers the
 " `help' filetype, but that doesn't seem to prevent help from working
 " properly]:
-augroup filetype
-  autocmd BufNewFile,BufRead *.txt set filetype=human
-augroup END
+"augroup filetype
+"  autocmd BufNewFile,BufRead *.txt set filetype=human
+"augroup END
 
 " in human-language files, automatically format everything at 72 chars:
 autocmd FileType mail,human set formatoptions+=t textwidth=72
@@ -815,7 +815,6 @@ set foldlevelstart=0
 set foldlevel=0
 " autocmd FileType tex,c,cpp,h,pl,perl,py,bib,php,sh,txt normal zR
 autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
-autocmd BufRead,BufNewFile CMakeLists.txt setf cmake
 autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
 set tabstop=2
 hi Underlined ctermfg=6
