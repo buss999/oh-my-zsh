@@ -260,13 +260,10 @@ nmap <F9> \sh
 " wrap in insert mode:
 set whichwrap=h,l,~,[,]
 
-" page down with <Space> (like in `Lynx', `Mutt', `Pine', `Netscape Navigator',
-" `SLRN', `Less', and `More'); page up with - (like in `Lynx', `Mutt', `Pine'),
-" or <BkSpc> (like in `Netscape Navigator'):
-noremap <Space> <PageDown>
-noremap <BS> <PageUp>
-noremap - <PageUp>
-" [<Space> by default is like l, <BkSpc> like h, and - like k.]
+" Space open+closes code folds
+vnoremap <space> zf<CR>
+nnoremap <space> zd<CR>
+
 
 " scroll the window (but leaving the cursor in the same place) by a couple of
 " lines up/down with <Ins>/<Del> (like in `Lynx'):
