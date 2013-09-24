@@ -191,68 +191,6 @@ set incsearch
 set gdefault
 
 
-" * Spelling
-
-" define `Ispell' language and personal dictionary, used in several places
-" below:
-
-"let IspellLang = 'british'
-"let PersonalDict = '~/.ispell_' . IspellLang
-let PersonalDict = '~/.aspell.en.pws'
-
-" try to avoid misspelling words in the first place -- have the insert mode
-" <Ctrl>+N/<Ctrl>+P keys perform completion on partially-typed words by
-" checking the Linux word list and the personal `Ispell' dictionary; sort out
-" case sensibly (so that words at starts of sentences can still be completed
-" with words that are in the dictionary all in lower case):
-"execute 'set dictionary+=' . PersonalDict
-"set dictionary+=/usr/dict/words
-set complete=.,w,k
-set infercase
-
-" correct my common typos without me even noticing them:
-abbreviate teh the
-abbreviate spolier spoiler
-abbreviate atmoic atomic
-
-" Spell checking operations are defined next.  They are all set to normal mode
-" keystrokes beginning \s but function keys are also mapped to the most common
-" ones.  The functions referred to are defined at the end of this .vimrc.
-
-" \si ("spelling interactive") saves the current file then spell checks it
-" interactively through `Ispell' and reloads the corrected version:
-execute 'nnoremap \si :w<CR>:!aspell -x check %<CR>:e<CR><CR>'
-
-" \sl ("spelling list") lists all spelling mistakes in the current buffer,
-" but excludes any in news/mail headers or in ("> ") quoted text:
-execute 'nnoremap \sl :w ! grep -v "^>" <Bar> grep -E -v "^[[:alpha:]-]+: " ' .
-  \ '<Bar> aspell list <Bar> sort <Bar> uniq<CR>'
-
-" \sh ("spelling highlight") highlights (in red) all misspelt words in the
-" current buffer, and also excluding the possessive forms of any valid words
-" (EG "Lizzy's" won't be highlighted if "Lizzy" is in the dictionary); with
-" mail and news messages it ignores headers and quoted text; for HTML it
-" ignores tags and only checks words that will appear, and turns off other
-" syntax highlighting to make the errors more apparent [function at end of
-" file]:
-nnoremap \sh :call HighlightSpellingErrors()<CR><CR>
-nmap <F9> \sh
-
-" \sc ("spelling clear") clears all highlighted misspellings; for HTML it
-" restores regular syntax highlighting:
- nnoremap \sc :if &ft == 'html' <Bar> sy on <Bar>
-  \ else <Bar> :sy clear SpellError <Bar> endif<CR>
- nmap <F10> \sc
-
-" \sa ("spelling add") adds the word at the cursor position to the personal
-" dictionary (but for possessives adds the base word, so that when the cursor
-" is on "Ceri's" only "Ceri" gets added to the dictionary), and stops
-" highlighting that word as an error (if appropriate) [function at end of
-" file]:
- nnoremap \sa :call AddWordToDictionary()<CR><CR>
- nmap <F8> \sa
-
-
 " * Keystrokes -- Moving Around
 
 " have the h and l cursor keys wrap between lines (like <Space> and <BkSpc> do
