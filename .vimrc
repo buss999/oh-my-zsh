@@ -626,13 +626,19 @@ set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/afte
 set modeline
 
 " for OmniCpp ?
-set nocp
+autocmd FileType c,cpp set nocp
 
-" Set up ctags
-set tags+=~/.vim/tags/stl
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-noremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . <cr>
-inoremap <F12> <Esc>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . <cr>
+" Set up ctags for c/cpp
+autocmd FileType c,cpp set tags+=~/.vim/tags/stl
+autocmd FileType c,cpp map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr><cr>
+autocmd FileType c,cpp noremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr><cr>
+autocmd FileType c,cpp inoremap <F12> <Esc>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr><cr>
+
+autocmd FileType tex map <C-F12> :!ctags --format=2 --fields=nks %<cr><cr>
+autocmd FileType tex noremap <F12> :!ctags --format=2 --fields=nks %<cr><cr>
+autocmd FileType tex inoremap <F12> <Esc>:!ctags --format=2 --fields=nks %<cr><cr>
+autocmd FileType tex set iskeyword=45,48-58,a-z,A-Z,192-255
+
 
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
