@@ -31,13 +31,13 @@ plugins=(git svn ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
-VIMODE="i "
-function zle-keymap-select {
-    VIMODE="${${KEYMAP/(main|viins)/i }/(vicmd)/}${${KEYMAP/vicmd/c }/(main|viins)/}"
-    zle reset-prompt
-}
-zle -N zle-keymap-select
-set -o vi
+#VIMODE="i "
+#function zle-keymap-select {
+#    VIMODE="${${KEYMAP/(main|viins)/i }/(vicmd)/}${${KEYMAP/vicmd/c }/(main|viins)/}"
+#    zle reset-prompt
+#}
+#zle -N zle-keymap-select
+#set -o vi
 typeset -A keym
 bindkey -M viins "OA" up-line-or-history
 bindkey -M viins "OB" down-line-or-history
