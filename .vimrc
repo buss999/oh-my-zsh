@@ -654,6 +654,10 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
+" remap semi-colon to colon
+nnoremap ; :
+nnoremap : ;
+
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
